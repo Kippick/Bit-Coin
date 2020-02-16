@@ -26,7 +26,7 @@
 }
 .info a:after{
   content:" | ";
-  color:#FFC900
+  color:#235A8C
 }
 
 .info a:last-of-type:after{content:""}
@@ -40,7 +40,7 @@
     width: 250px;
     height: 80px;
     line-height: 80px;
-    color:#ffc900;
+    color:#235A8C;
     background-color: #fff;
     font-size: 280%;
     position: absolute;
