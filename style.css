@@ -3,8 +3,9 @@
 body {
   width:100%;
   height:100%;
-  background:#FFC900;
+  background:#235a8c;
   font-family: 'Raleway', sans-serif;
+  font-style: gras;
   font-weight:300;
   margin:0;
   padding:0;
@@ -59,7 +60,7 @@ body {
 	width: 100px;
 	height: 100px;
 	border-radius: 50%;
-	background: #FFC900;
+	background: #235a8c;
 	position: absolute;
 	z-index: 1;
 	top: 80px;
@@ -74,7 +75,7 @@ body {
 	width: 200px;
 	height: 200px;
 	border-radius: 50%;
-	background: #FFC900;
+	background: #235a8c;
 	position: absolute;
 	z-index: 1;
 	top: 0;
@@ -89,7 +90,7 @@ body {
 	width: 300px;
 	height: 300px;
 	border-radius: 50%;
-	background: #FFC900;
+	background: #235a8c;
 	position: absolute;
 	z-index: 1;
 	top: 200px;
