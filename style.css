@@ -1,7 +1,7 @@
  body{
     margin: 0;
     padding: 20px;
-    background-color:#235A8C;
+    background-color:#FFC900;
     font-family: arial;
   height: 700px
 }
@@ -13,7 +13,7 @@
   padding: 10px 0;
   font-size: 110%;
   text-transform: capitalize;
-  color:#235A8C;
+  color:#FFC900;
   font-weight: 700;
   background-color:#fff;
   width:100%;
@@ -26,7 +26,7 @@
 }
 .info a:after{
   content:" | ";
-  color:#235A8C
+  color:#FFC900
 }
 
 .info a:last-of-type:after{content:""}
@@ -40,7 +40,7 @@
     width: 250px;
     height: 80px;
     line-height: 80px;
-    color:#235A8C;
+    color:#FFC900;
     background-color: #fff;
     font-size: 280%;
     position: absolute;
