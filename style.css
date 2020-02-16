@@ -1,7 +1,7 @@
  body{
     margin: 0;
     padding: 20px;
-    background-color:#FFC900;
+    background-color:#235A8C;
     font-family: arial;
   height: 700px
 }
@@ -13,7 +13,7 @@
   padding: 10px 0;
   font-size: 110%;
   text-transform: capitalize;
-  color:#FFC900;
+  color:#235A8C;
   font-weight: 700;
   background-color:#fff;
   width:100%;
