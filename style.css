@@ -39,7 +39,7 @@ overflow:hidden;
 .circles li{
 position:absolute;
 display:block;
-list-style: url('/bitcoin_logo.svg');
+list-style:none;
 width:20px;
 height:20px;
 background:rgba(255, 255, 255, 0.2);
