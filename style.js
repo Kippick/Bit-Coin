@@ -1,147 +1,70 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,700);
+var background = {}
 
-body {
-  width:100%;
-  height:100%;
-  background:#235a8c;
-  font-family: 'Raleway', sans-serif;
-  font-weight:300;
-  margin:0;
-  padding:0;
+background.initializr = function (){
+
+var $this = this;
+
+
+
+//option
+$this.id = "background_css3";
+$this.style = {bubbles_color:"#fff",stroke_width:0, stroke_color :"black"};
+$this.bubbles_number = 30;
+$this.speed = [1500,8000]; //milliseconds
+$this.max_bubbles_height = $this.height;
+$this.shape = false // 1 : circle | 2 : triangle | 3 : rect | false :random
+
+if($("#"+$this.id).lenght > 0){
+$("#"+$this.id).remove();
 }
+$this.object = $("<div style='z-inde:-1;margin:0;padding:0; overflow:hidden;position:absolute;bottom:0' id='"+$this.id+"'> </div>'").appendTo("body");
 
-#title {
-  text-align:center;
-  font-size:40px;
-  margin-top:40px;
-  margin-bottom:-40px;
-  position:relative;
-  color:#fff;
-}
+$this.ww = $(window).width()
+$this.wh = $(window).height()
+$this.width = $this.object.width($this.ww);
+$this.height = $this.object.height($this.wh);
 
-.circles:after {
-  content:'';
-  display:inline-block;
-  width:100%;
-  height:100px;
-  background:#fff;
-  position:absolute;
-  top:-50px;
-  left:0;
-  transform:skewY(-4deg);
-  -webkit-transform:skewY(-4deg);
-}
 
-.circles { 
-	background:#fff;
-	text-align: center;
-	position: relative;
-  margin-top:-60px;
-  box-shadow:inset -1px -4px 4px rgba(0,0,0,0.2);
+$("body").prepend("<style>.shape_background {transform-origin:center; width:80px; height:80px; background: "+$this.style.bubbles_color+"; position: absolute}</style>");
+
+
+for (i = 0; i < $this.bubbles_number; i++) {
+$this.generate_bubbles()
 }
 
-.circles p {
-	font-size: 240px;
-	color: #fff;
-	padding-top: 60px;
-	position: relative;
-  z-index: 9;
-  line-height: 100%;
 }
 
-.circles p small { 
-  font-size: 40px; 
-  line-height: 100%; 
-  vertical-align: top;   
+
+
+
+
+background.generate_bubbles = function() {
+var $this = this;
+var base = $("<div class='shape_background'></div>");
+var shape_type = $this.shape ? $this.shape : Math.floor($this.rn(1,3));
+if(shape_type == 1) {
+var bolla = base.css({borderRadius: "50%"})
+}else if (shape_type == 2){
+var bolla = base.css({width:0, height:0, "border-style":"solid","border-width":"0 40px 69.3px 40px","border-color":"transparent transparent "+$this.style.bubbles_color+" transparent", background:"transparent"}); 
+}else{
+var bolla = base; 
+} 
+var rn_size = $this.rn(.8,1.2);
+bolla.css({"transform":"scale("+rn_size+") rotate("+$this.rn(-360,360)+"deg)", top:$this.wh+100, left:$this.rn(-60, $this.ww+60)}); 
+bolla.appendTo($this.object);
+bolla.transit({top: $this.rn($this.wh/2,$this.wh/2-60), "transform":"scale("+rn_size+") rotate("+$this.rn(-360,360)+"deg)", opacity: 0},$this.rn($this.speed[0],$this.speed[1]), function(){
+$(this).remove();
+$this.generate_bubbles();
+})
+
 }
 
-.circles .circle.small {
-	width: 100px;
-	height: 100px;
-	border-radius: 50%;
-	background: #235a8c;
-	position: absolute;
-	z-index: 1;
-	top: 80px;
-	left: 50%;
-	animation: 7s smallmove infinite cubic-bezier(1,.22,.71,.98);	
-	-webkit-animation: 7s smallmove infinite cubic-bezier(1,.22,.71,.98);
-	animation-delay: 1.2s;
-	-webkit-animation-delay: 1.2s;
-}
 
-.circles .circle.med {
-	width: 200px;
-	height: 200px;
-	border-radius: 50%;
-	background: #235a8c;
-	position: absolute;
-	z-index: 1;
-	top: 0;
-	left: 10%;
-	animation: 7s medmove infinite cubic-bezier(.32,.04,.15,.75);	
-	-webkit-animation: 7s medmove infinite cubic-bezier(.32,.04,.15,.75);
-	animation-delay: 0.4s;
-	-webkit-animation-delay: 0.4s;
+background.rn = function(from, to, arr) {
+if(arr){
+return Math.random() * (to - from + 1) + from;
+}else{
+return Math.floor(Math.random() * (to - from + 1) + from);
 }
-
-.circles .circle.big {
-	width: 300px;
-	height: 300px;
-	border-radius: 50%;
-	background: #235a8c;
-	position: absolute;
-	z-index: 1;
-	top: 200px;
-	right: 0;
-	animation: 8s bigmove infinite;	
-	-webkit-animation: 8s bigmove infinite;
-	animation-delay: 3s;
-	-webkit-animation-delay: 1s;
 }
-
-@-webkit-keyframes smallmove {
-	0% { top: 10px; left: 45%; opacity: 1; }
-	25% { top: 300px; left: 40%; opacity:0.7; }
-	50% { top: 240px; left: 55%; opacity:0.4; }
-	75% { top: 100px; left: 40%;  opacity:0.6; }
-	100% { top: 10px; left: 45%; opacity: 1; }
-}
-@keyframes smallmove {
-	0% { top: 10px; left: 45%; opacity: 1; }
-	25% { top: 300px; left: 40%; opacity:0.7; }
-	50% { top: 240px; left: 55%; opacity:0.4; }
-	75% { top: 100px; left: 40%;  opacity:0.6; }
-	100% { top: 10px; left: 45%; opacity: 1; }
-}
-
-@-webkit-keyframes medmove {
-	0% { top: 0px; left: 20%; opacity: 1; }
-	25% { top: 300px; left: 80%; opacity:0.7; }
-	50% { top: 240px; left: 55%; opacity:0.4; }
-	75% { top: 100px; left: 40%;  opacity:0.6; }
-	100% { top: 0px; left: 20%; opacity: 1; }
-}
-
-@keyframes medmove {
-	0% { top: 0px; left: 20%; opacity: 1; }
-	25% { top: 300px; left: 80%; opacity:0.7; }
-	50% { top: 240px; left: 55%; opacity:0.4; }
-	75% { top: 100px; left: 40%;  opacity:0.6; }
-	100% { top: 0px; left: 20%; opacity: 1; }
-}
-
-@-webkit-keyframes bigmove {
-	0% { top: 0px; right: 4%; opacity: 0.5; }
-	25% { top: 100px; right: 40%; opacity:0.4; }
-	50% { top: 240px; right: 45%; opacity:0.8; }
-	75% { top: 100px; right: 35%;  opacity:0.6; }
-	100% { top: 0px; right: 4%; opacity: 0.5; }
-}
-@keyframes bigmove {
-	0% { top: 0px; right: 4%; opacity: 0.5; }
-	25% { top: 100px; right: 40%; opacity:0.4; }
-	50% { top: 240px; right: 45%; opacity:0.8; }
-	75% { top: 100px; right: 35%;  opacity:0.6; }
-	100% { top: 0px; right: 4%; opacity: 0.5; }
-}
+background.initializr()
